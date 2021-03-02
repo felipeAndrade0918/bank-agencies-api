@@ -1,8 +1,5 @@
 package com.bank.agencies.endpoint;
 
-import com.bank.agencies.Application;
-import com.bank.agencies.domain.AgencyGatewayResponse;
-import com.bank.agencies.domain.AgencyResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+import com.bank.agencies.Application;
+import com.bank.agencies.domain.AgencyResponse;
 
 @SpringBootTest(classes = { Application.class }, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class AgenciesControllerIntegrationTest {

@@ -1,10 +1,15 @@
 package com.bank.agencies.service;
 
-import com.bank.agencies.domain.AgencyGatewayResponse;
-import com.bank.agencies.external.gateway.AgenciesGateway;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.bank.agencies.domain.AgencyGatewayResponse;
+import com.bank.agencies.domain.AgencyResponse;
+import com.bank.agencies.external.gateway.AgenciesGateway;
 
 @Service
 public class AgencyService {
@@ -17,5 +22,15 @@ public class AgencyService {
 
     public List<AgencyGatewayResponse> execute() {
         return bankResourcesGateway.findAllAgencies();
+    }
+    
+    public Map<String, List<AgencyResponse>> findAllAgenciesGroupedByState() {
+    	List<AgencyGatewayResponse> agencies = bankResourcesGateway.findAllAgenciesSortedByStateAndCity();
+    	
+    	return agencies.stream()
+				.map(agencyGateway -> AgencyResponse.AgencyResponseBuilder.anAgencyResponse()
+						.bank(agencyGateway.getBank()).city(agencyGateway.getCity()).name(agencyGateway.getName())
+						.state(agencyGateway.getState()).build())
+				.collect(Collectors.groupingBy(AgencyResponse::getState, LinkedHashMap::new, Collectors.toList()));
     }
 }

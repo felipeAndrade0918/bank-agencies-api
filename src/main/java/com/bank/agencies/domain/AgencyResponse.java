@@ -2,14 +2,19 @@ package com.bank.agencies.domain;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 public class AgencyResponse implements Serializable {
 
     private static final long serialVersionUID = -7394339763238481398L;
 
+    @JsonView(AgencyGroupedByStateJsonView.class)
     private String name;
     
+    @JsonView(AgencyGroupedByStateJsonView.class)
     private String bank;
     
+    @JsonView(AgencyGroupedByStateJsonView.class)
     private String city;
     
     private String state;

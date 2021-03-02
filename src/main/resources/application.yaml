@@ -1,1 +1,1 @@
-agencies.service.base.url = https://olinda.bcb.gov.br/olinda/servico/Informes_Agencias/versao/v1/odata/Agencias
+agencies.service.base.url: https://olinda.bcb.gov.br/olinda/servico/Informes_Agencias/versao/v1/odata/Agencias
