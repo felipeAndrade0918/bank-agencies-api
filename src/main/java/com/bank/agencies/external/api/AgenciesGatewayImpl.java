@@ -6,6 +6,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -50,8 +51,26 @@ public class AgenciesGatewayImpl implements AgenciesGateway {
 
 	@Override
 	public List<AgencyGatewayResponse> findAllAgenciesSortedByStateAndCity() {
+		int pageSize = 300;
+		int skip = 0;
+		List<AgencyGatewayResponse> agencies = new ArrayList<>();
+		List<AgencyGatewayResponse> paginatedAgencies = new ArrayList<>();
+		
+		do {
+			paginatedAgencies = findAllAgenciesSortedByStateAndCityPaginated(pageSize, skip);
+			agencies.addAll(paginatedAgencies);
+			
+			skip += 300;
+		} while (!paginatedAgencies.isEmpty());
+		
+		return agencies;
+	}
+
+	private List<AgencyGatewayResponse> findAllAgenciesSortedByStateAndCityPaginated(int pageSize, int skip) {
 		URI apiURI = getBaseParams()
 				.queryParam("$orderby", "UF asc,Municipio asc")
+				.queryParam("$top", pageSize)
+				.queryParam("$skip", skip)
 				.build()
 				.toUri();
 
