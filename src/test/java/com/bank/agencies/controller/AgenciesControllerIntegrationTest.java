@@ -1,4 +1,6 @@
-package com.bank.agencies.endpoint;
+package com.bank.agencies.controller;
+
+import java.util.Map;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -25,6 +27,14 @@ class AgenciesControllerIntegrationTest {
 
 		Assertions.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
 		Assertions.assertTrue(responseEntity.getBody().length > 0);
+	}
+	
+	@Test
+	public void shouldBeAbleToRequestTheGroupedAgencies() {
+		var responseEntity = restTemplate.getForEntity(API_BASE_URL + "/grouped-by-state", Map.class);
+		
+		Assertions.assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+		Assertions.assertTrue(responseEntity.getBody().size() > 0);
 	}
 
 }
