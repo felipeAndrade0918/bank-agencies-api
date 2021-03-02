@@ -1,0 +1,61 @@
+openapi: 3.0.1
+info:
+  title: Banking Agencies API
+  version: v0.1
+servers:
+  - url: 'http://localhost:8080'
+    description: Localhost server
+paths:
+  /agencies:
+    get:
+      tags:
+        - Agency
+      operationId: findAllAgencies
+      summary: Get all the agencies
+      responses:
+        '200':
+          description: OK
+          content:
+            appplicatio/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Agency'
+                  
+  /agencies/grouped-by-state:
+    get:
+      tags:
+        - Agency
+      operationId: findAllAgenciesGroupedByState
+      summary: Get all the agencies grouped by the state
+      responses:
+        '200':
+          description: OK
+          content:
+            appplicatio/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/State'
+
+components:
+  schemas:
+    Agency:
+      type: object
+      properties:
+        name:
+          type: string
+        bank:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+          
+    State:
+      type: object
+      properties:
+        stateName:
+          type: array
+          items:
+            $ref: '#/components/schemas/Agency'
