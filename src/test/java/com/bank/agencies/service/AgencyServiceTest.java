@@ -14,7 +14,7 @@ import com.bank.agencies.domain.AgencyGatewayResponse;
 import com.bank.agencies.external.gateway.AgenciesGateway;
 import com.bank.agencies.fixture.AgenciesFixture;
 
-public class FindAllAgenciesUseCaseTest {
+public class AgencyServiceTest {
 
     final AgenciesGateway gateway = mock(AgenciesGateway.class);
     final AgencyService findAllAgencies = new AgencyService(gateway);
