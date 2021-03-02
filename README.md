@@ -9,4 +9,4 @@ Dados obtidos através do Portal de Dados do Banco Central do Brasil:
 https://dadosabertos.bcb.gov.br/dataset/agencias
 
 # Endpoints
-Os endpoints estão disponíveis no arquivo de OpenAPI AKA Swagger.
+Os endpoints estão disponíveis no arquivo de OpenAPI disponível [aqui](https://github.com/felipeAndrade0918/bank-agencies-api/blob/main/swagger.yaml).
