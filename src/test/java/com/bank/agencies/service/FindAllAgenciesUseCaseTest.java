@@ -1,21 +1,23 @@
-package com.bank.agencies.usecase;
+package com.bank.agencies.service;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
 
 import com.bank.agencies.domain.AgencyGatewayResponse;
 import com.bank.agencies.external.gateway.AgenciesGateway;
 import com.bank.agencies.fixture.AgenciesFixture;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 public class FindAllAgenciesUseCaseTest {
 
     final AgenciesGateway gateway = mock(AgenciesGateway.class);
-    final FindAllAgenciesUseCase findAllAgencies = new FindAllAgenciesUseCase(gateway);
+    final AgencyService findAllAgencies = new AgencyService(gateway);
 
     List<AgencyGatewayResponse> agencies;
 

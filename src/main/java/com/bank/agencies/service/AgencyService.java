@@ -1,4 +1,4 @@
-package com.bank.agencies.usecase;
+package com.bank.agencies.service;
 
 import com.bank.agencies.domain.AgencyGatewayResponse;
 import com.bank.agencies.external.gateway.AgenciesGateway;
@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FindAllAgenciesUseCase {
+public class AgencyService {
 
     private final AgenciesGateway bankResourcesGateway;
 
-    public FindAllAgenciesUseCase(AgenciesGateway bankResourcesGateway) {
+    public AgencyService(AgenciesGateway bankResourcesGateway) {
         this.bankResourcesGateway = bankResourcesGateway;
     }
 
